@@ -11,6 +11,13 @@ export async function generateStaticParams() {
   ];
 }
 
-export default function PGPage({ params }: { params: { id: string } }) {
+// ✅ Define props interface explicitly
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default function PGPage({ params }: PageProps) {
   return <PGDetail pgId={params.id} />;
 }
