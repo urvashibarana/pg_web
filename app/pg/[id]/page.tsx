@@ -1,9 +1,6 @@
-// app/pg/[id]/page.tsx
-
-import { PageProps } from 'next';
 import PGDetail from './PGDetail';
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return [
     { id: '1' },
     { id: '2' },
@@ -14,6 +11,6 @@ export function generateStaticParams() {
   ];
 }
 
-export default function Page({ params }: PageProps) {
+export default function PGPage({ params }: { params: { id: string } }) {
   return <PGDetail pgId={params.id} />;
 }
