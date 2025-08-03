@@ -1,10 +1,7 @@
-import PGDetail from './PGDetail';
+// app/pg/[id]/page.tsx
 
-interface Props {
-  params: {
-    id: string;
-  };
-}
+import { PageProps } from 'next';
+import PGDetail from './PGDetail';
 
 export function generateStaticParams() {
   return [
@@ -17,6 +14,6 @@ export function generateStaticParams() {
   ];
 }
 
-export default function Page({ params }: Props) {
+export default function Page({ params }: PageProps) {
   return <PGDetail pgId={params.id} />;
 }
