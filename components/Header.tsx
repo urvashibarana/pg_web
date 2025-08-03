@@ -14,47 +14,83 @@ export default function Header() {
             <span className="text-2xl font-pacifico text-blue-600">PGFinder</span>
           </Link>
           
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors">
+            <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors duration-200">
               Home
             </Link>
-            <Link href="/search" className="text-gray-700 hover:text-blue-600 transition-colors">
+            <Link href="/search" className="text-gray-700 hover:text-blue-600 transition-colors duration-200">
               Search
             </Link>
-            <Link href="/host-dashboard" className="text-gray-700 hover:text-blue-600 transition-colors">
+            <Link href="/host-dashboard" className="text-gray-700 hover:text-blue-600 transition-colors duration-200">
               Host Dashboard
             </Link>
           </nav>
 
-          <div className="flex items-center space-x-4">
-            <Link href="/auth/login" className="text-gray-700 hover:text-blue-600 transition-colors">
+          {/* Desktop Auth Buttons */}
+          <div className="hidden md:flex items-center space-x-4">
+            <Link href="/auth/login" className="text-gray-700 hover:text-blue-600 transition-colors duration-200">
               Login
             </Link>
-            <Link href="/auth/signup" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap">
+            <Link href="/auth/signup" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 whitespace-nowrap">
               Sign Up
             </Link>
-            <button 
-              className="md:hidden w-6 h-6 flex items-center justify-center"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              <i className="ri-menu-line text-xl"></i>
-            </button>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors duration-200"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <i className={`ri-${isMenuOpen ? 'close' : 'menu'}-line text-xl`}></i>
+          </button>
         </div>
       </div>
 
+      {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t">
-          <nav className="px-4 py-2 space-y-2">
-            <Link href="/" className="block py-2 text-gray-700 hover:text-blue-600">
+        <div className="md:hidden bg-white border-t absolute top-full left-0 right-0 shadow-lg">
+          <nav className="px-4 py-3 space-y-1">
+            <Link 
+              href="/" 
+              className="block py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Home
             </Link>
-            <Link href="/search" className="block py-2 text-gray-700 hover:text-blue-600">
+            <Link 
+              href="/search" 
+              className="block py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Search
             </Link>
-            <Link href="/host-dashboard" className="block py-2 text-gray-700 hover:text-blue-600">
+            <Link 
+              href="/host-dashboard" 
+              className="block py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Host Dashboard
             </Link>
+            
+            {/* Mobile Auth Buttons */}
+            <div className="pt-2 mt-2 border-t border-gray-100">
+              <Link 
+                href="/auth/login" 
+                className="block py-3 px-4 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors duration-200"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Login
+              </Link>
+              <Link 
+                href="/auth/signup" 
+                className="block py-3 px-4 rounded-lg bg-blue-600 text-white text-center hover:bg-blue-700 transition-colors duration-200 mt-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sign Up
+              </Link>
+            </div>
           </nav>
         </div>
       )}
