@@ -1,11 +1,12 @@
-import { Metadata } from 'next';
 import PGDetail from './PGDetail';
 
-interface PGPageProps {
-  params: { id: string };
+interface Props {
+  params: {
+    id: string;
+  };
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return [
     { id: '1' },
     { id: '2' },
@@ -16,12 +17,6 @@ export async function generateStaticParams() {
   ];
 }
 
-export async function generateMetadata({ params }: PGPageProps): Promise<Metadata> {
-  return {
-    title: `PG ${params.id} Details`,
-  };
-}
-
-export default async function PGPage({ params }: PGPageProps) {
+export default function Page({ params }: Props) {
   return <PGDetail pgId={params.id} />;
 }
