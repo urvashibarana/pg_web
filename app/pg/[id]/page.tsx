@@ -1,7 +1,5 @@
 import PGDetail from './PGDetail';
 
-export const dynamicParams = true;
-
 export async function generateStaticParams() {
   return [
     { id: '1' },
@@ -13,7 +11,6 @@ export async function generateStaticParams() {
   ];
 }
 
-export default function Page({ params }: { params: Record<string, string> }) {
-  const pgId = params.id;
-  return <PGDetail pgId={pgId} />;
+export default function PGPage({ params }: { params: { id: string } }) {
+  return <PGDetail pgId={params.id} />;
 }
