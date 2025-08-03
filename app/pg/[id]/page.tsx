@@ -11,6 +11,7 @@ export async function generateStaticParams() {
   ];
 }
 
-export default function PGPage({ params }: { params: { id: string } }) {
-  return <PGDetail pgId={params.id} />;
+export default async function PGPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  return <PGDetail pgId={id} />;
 }
